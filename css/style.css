@@ -1,0 +1,281 @@
+@import url("https://fonts.googleapis.com/css2?family=Antonio:wght@100;200;300;400;500;600;700&family=Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+:root {
+  --white: #ffffff;
+  --black: #070724;
+  --dark-gray: #38384f;
+  --light-gray: #838391;
+  --teal: #419ebb;
+  --yellow: #eda249;
+  --purple: #6f2ed6;
+  --brown: #d14c32;
+  --red: #d83a34;
+  --light-brown: #cd5120;
+  --green: #1ec2a4;
+  --blue: #2d68f0;
+
+  --mercury: #def4fc;
+  --venus: #f7cc7f;
+  --earth: #2d68f0;
+  --mars: #d14c32;
+  --jupiter: #ecad7a;
+  --saturn: #eda249;
+  --uranus: #419ebb;
+  --neptune: #6f2ed6;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: url("../assets/background-stars.svg") no-repeat center/cover;
+  background-color: #070724;
+  color: var(--white);
+  font-family: "Spartan", sans-serif;
+  text-align: center;
+}
+
+ul {
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  font-family: "Antonio", sans-serif;
+  text-transform: uppercase;
+}
+
+a {
+  text-decoration: none;
+  color: var(--white);
+}
+
+.information li,
+.source,
+.stat-desc {
+  opacity: 0.5;
+}
+
+header {
+  padding: 16px 24px 0 24px;
+}
+
+header,
+.info-tab {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.info-tab li {
+  cursor: pointer;
+}
+
+.planet-nav {
+  height: 100vh;
+}
+
+.planet-tab {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.4rem 0;
+}
+
+.planet-tab:first-child {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 1rem;
+}
+
+.planet-tab:last-child {
+  border-bottom: none;
+}
+
+.planet-icon {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 1.5rem;
+}
+
+.planet-img-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.planet-color {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+}
+
+.mercury {
+  background-color: #def4fc;
+}
+
+.venus {
+  background-color: #f7cc7f;
+}
+
+.earth {
+  background-color: var(--blue);
+}
+
+.mars {
+  background-color: var(--brown);
+}
+
+.jupiter {
+  background-color: #ecad7a;
+}
+
+.saturn {
+  background-color: var(--yellow);
+}
+
+.uranus {
+  background-color: var(--teal);
+}
+.neptune {
+  background-color: var(--purple);
+}
+
+.planet-icon p {
+  text-transform: uppercase;
+  font-size: 15px;
+  letter-spacing: 1.36px;
+  line-height: 25px;
+  font-weight: 700;
+}
+
+.information ul {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+}
+
+.information li {
+  margin: 0.5rem 0;
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 1.9px;
+  font-weight: 800;
+}
+
+.information li:first-child {
+  margin-left: 24px;
+}
+
+.information li:last-child {
+  margin-right: 24px;
+}
+
+/* curerent tab styling */
+.information ul li.mercury-current {
+  opacity: 1;
+  border-bottom: 4px solid var(--mercury);
+}
+.information ul li.venus-current {
+  opacity: 1;
+  border-bottom: 4px solid var(--venus);
+}
+.information ul li.earth-current {
+  opacity: 1;
+  border-bottom: 4px solid var(--earth);
+}
+.information ul li.mars-current {
+  opacity: 1;
+  border-bottom: 4px solid var(--mars);
+}
+.information ul li.jupiter-current {
+  opacity: 1;
+  border-bottom: 4px solid var(--jupiter);
+}
+.information ul li.saturn-current {
+  opacity: 1;
+  border-bottom: 4px solid var(--saturn);
+}
+.information ul li.uranus-current {
+  opacity: 1;
+  border-bottom: 4px solid var(--uranus);
+}
+.information ul li.neptune-current {
+  opacity: 1;
+  border-bottom: 4px solid var(--neptune);
+}
+
+/* current tab styling ends */
+
+.planet-container {
+  padding: 0 24px 46px 24px;
+}
+
+.planet-img {
+  height: 111px;
+  margin: 95px auto 98px;
+}
+
+.planet-name {
+  font-size: 40px;
+  line-height: 52px;
+}
+
+.overview,
+.structure,
+.surface {
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: 0.4px;
+}
+
+.structure,
+.surface {
+  display: none;
+}
+
+.source {
+  margin: 32px 0 24px 0;
+}
+
+.source a {
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.source a i {
+  margin-left: 3px;
+}
+
+.stat {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  margin-bottom: 0.5rem;
+  padding: 0.5rem 1rem;
+}
+
+.stat-desc {
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.5rem;
+  letter-spacing: 0.72px;
+}
+
+.stat-answer {
+  font-size: 20px;
+}
+
+.hide {
+  display: none;
+}
