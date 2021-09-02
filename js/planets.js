@@ -3,13 +3,15 @@ const infoTab = document.querySelector(".info-tab");
 
 const planetInfo = "../data.json";
 
-retrievePlanets(planetInfo);
+retrievePlanets(planetInfo, 0);
 
 const appendPlanet = (planet, index) => {
   planetArr = planet[index];
 
   const { name, radius, revolution, rotation, temperature } = planetArr;
   const planetImage = planetArr.images.planet;
+  const planetInternal = planetArr.images.internal;
+  const planetGeology = planetArr.images.geology;
   const overviewContent = planetArr.overview.content;
   const overviewSource = planetArr.overview.source;
   const structureContent = planetArr.structure.content;
@@ -18,6 +20,9 @@ const appendPlanet = (planet, index) => {
   const surfaceSource = planetArr.geology.source;
 
   const lowercaseName = name.toLowerCase();
+
+  infoTab.innerHTML = "";
+  planetContainer.innerHTML = "";
 
   infoTab.insertAdjacentHTML(
     "beforeend",
@@ -34,7 +39,7 @@ const appendPlanet = (planet, index) => {
 	<img
 	src="${planetImage}"
 	alt="Mercury"
-	class="planet-img"
+	class="planet-img ${lowercaseName}-size"
   	/>
   	<h2 class="planet-name">${name}</h2>
 
@@ -95,42 +100,53 @@ const appendPlanet = (planet, index) => {
   	</div>
 	`
   );
-};
 
-const tabUpdate = (name) => {
-  const overview = document.querySelector(".overview");
-  const structure = document.querySelector(".structure");
-  const surface = document.querySelector(".surface");
-  const infoLi = document.querySelectorAll(".info-tab li");
-  const planetName = name.toLowerCase();
+  let imageArr = [planetImage, planetInternal, planetGeology];
 
-  infoLi.forEach((li) => {
-    li.addEventListener("click", function (e) {
-      for (let x = 0; x < infoLi.length; x++) {
-        infoLi[x].classList.remove(`${planetName}-current`);
-      }
-      if (e.target.textContent.toLowerCase() === "structure") {
-        structure.style.display = "block";
-        e.target.classList.add(`${planetName}-current`);
-        overview.style.display = "none";
-        surface.style.display = "none";
-      } else if (e.target.textContent.toLowerCase() === "surface") {
-        structure.style.display = "none";
-        overview.style.display = "none";
-        surface.style.display = "block";
-        e.target.classList.add(`${planetName}-current`);
-      } else {
-        structure.style.display = "none";
-        overview.style.display = "block";
-        e.target.classList.add(`${planetName}-current`);
-        surface.style.display = "none";
-      }
+  const tabUpdate = (name) => {
+    const overview = document.querySelector(".overview");
+    const structure = document.querySelector(".structure");
+    const surface = document.querySelector(".surface");
+    const infoLi = document.querySelectorAll(".info-tab li");
+    const planetImg = document.querySelector(".planet-img");
+
+    infoLi.forEach((li) => {
+      li.addEventListener("click", function (e) {
+        for (let x = 0; x < infoLi.length; x++) {
+          infoLi[x].classList.remove(`${name}-current`);
+        }
+        if (e.target.textContent.toLowerCase() === "structure") {
+          structure.style.display = "block";
+          e.target.classList.add(`${name}-current`);
+          overview.style.display = "none";
+          surface.style.display = "none";
+        } else if (e.target.textContent.toLowerCase() === "surface") {
+          structure.style.display = "none";
+          overview.style.display = "none";
+          surface.style.display = "block";
+          e.target.classList.add(`${name}-current`);
+        } else {
+          structure.style.display = "none";
+          overview.style.display = "block";
+          e.target.classList.add(`${name}-current`);
+          surface.style.display = "none";
+        }
+        for (let x = 0; x < infoLi.length; x++) {
+          if (infoLi[x].classList.contains(`${lowercaseName}-current`)) {
+            planetImg.src = `${imageArr[x]}`;
+          } else {
+          }
+        }
+      });
     });
-  });
+  };
+
+  tabUpdate(lowercaseName);
 };
 
-async function retrievePlanets(file) {
+async function retrievePlanets(file, index) {
   const response = await fetch(file);
   const planetData = await response.json();
-  appendPlanet(planetData, 0);
+
+  appendPlanet(planetData, index);
 }

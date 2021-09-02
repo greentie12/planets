@@ -225,6 +225,36 @@ header,
   margin: 95px auto 98px;
 }
 
+/* planet image size styling */
+.mercury-size {
+  height: 111px;
+}
+.venus-size {
+  height: 154px;
+}
+.earth-size {
+  height: 173px;
+}
+.mars-size {
+  height: 129px;
+}
+.jupiter-size {
+  height: 224px;
+  width: 224px;
+}
+.saturn-size {
+  height: 256px;
+  width: 256px;
+}
+.uranus-size {
+  height: 176px;
+}
+.neptune-size {
+  height: 173px;
+}
+
+/* planet size styling ends */
+
 .planet-name {
   font-size: 40px;
   line-height: 52px;
